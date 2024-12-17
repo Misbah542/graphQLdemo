@@ -68,6 +68,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation (libs.apollo.normalized.cache.sqlite)
 
     implementation(libs.apollo.runtime) // Apollo runtime
     implementation(libs.coil.compose)

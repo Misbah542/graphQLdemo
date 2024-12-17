@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.apollographql.apollo3.api.Optional
+import com.apollographql.apollo3.cache.normalized.FetchPolicy
+import com.apollographql.apollo3.cache.normalized.fetchPolicy
 import kotlinx.coroutines.launch
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -111,6 +113,7 @@ suspend fun loadCharacters(
     try {
         val response = RickAndMortyApiClient.apolloClient
             .query(GetCharactersQuery(Optional.present(page)))
+            .fetchPolicy(FetchPolicy.CacheAndNetwork)
             .execute()
 
         val results = response.data?.characters?.results?.filterNotNull().orEmpty()
